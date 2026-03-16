@@ -37,4 +37,4 @@ The simulation progresses in discrete time-steps called **ticks**. During each t
 ##  Author
 **Elias Joby** *Computer Science & Robotics*
 
-[Project Link](https://github.com/eliasjoby/CellAutomata-Forge) | [Reference: Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+[Project Link](https://eliasjoby.github.io/CellAutomata-Forge/) | [Reference: Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
