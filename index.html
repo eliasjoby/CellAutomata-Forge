@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conway Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <main class="app-shell">
+        <header class="hero">
+            <p class="eyebrow">Cellular Automata Playground</p>
+            <h1>Conway's Game of Life</h1>
+            <p class="subtitle">Paint a pattern, press play, and watch complexity emerge from simple rules.</p>
+        </header>
+
+        <section class="panel controls" aria-label="Game controls">
+            <div class="slider-grid">
+                <label class="control" for="speed">
+                    <span>Speed</span>
+                    <strong id="speedValue">20 fps</strong>
+                    <input type="range" min="2" max="120" value="20" id="speed">
+                </label>
+
+                <label class="control" for="row">
+                    <span>Rows</span>
+                    <strong id="rowval">40</strong>
+                    <input type="range" min="20" max="90" value="40" id="row">
+                </label>
+
+                <label class="control" for="col">
+                    <span>Columns</span>
+                    <strong id="colval">40</strong>
+                    <input type="range" min="20" max="90" value="40" id="col">
+                </label>
+            </div>
+
+            <div class="button-row">
+                <button id="start" class="btn btn-primary">Play</button>
+                <button id="step" class="btn">Step</button>
+                <button id="random" class="btn">Randomize</button>
+                <button id="clear" class="btn btn-danger">Clear</button>
+            </div>
+
+            <div class="status-row" role="status" aria-live="polite">
+                <p>State: <span id="state">Paused</span></p>
+                <p>Generation: <span id="generation">0</span></p>
+                <p>Alive: <span id="alive">0</span></p>
+                <p>Trace: <span id="traceMode">Off</span></p>
+            </div>
+
+            <p class="hint">Tip: double-click any cell to lock trace mode, then move your cursor to paint alive cells.</p>
+        </section>
+
+        <section class="panel board-wrap" aria-label="Game board">
+            <div id="grid" class="grid"></div>
+        </section>
+    </main>
+</body>
+</html>
