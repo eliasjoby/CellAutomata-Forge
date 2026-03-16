@@ -15,11 +15,19 @@
     <main class="app-shell">
         <header class="hero">
             <p class="eyebrow">Cellular Automata Playground</p>
-            <h1>Conway's Game of Life</h1>
+            <div class="heading-row">
+                <h1>Conway's Game of Life</h1>
+                <button id="about" class="btn btn-about" aria-haspopup="dialog" aria-controls="aboutModal">About</button>
+            </div>
             <p class="subtitle">Paint a pattern, press play, and watch complexity emerge from simple rules.</p>
         </header>
 
         <section class="panel controls" aria-label="Game controls">
+            <div class="controls-header" style="display: flex; justify-content: flex-end; margin-bottom: -0.2rem;">
+                <label style="font-size: 0.85rem; color: #475569; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-family: 'Sora', sans-serif;">
+                    <input type="checkbox" id="squareToggle" checked style="accent-color: #0f766e; cursor: pointer;"> Keep Grid Uniform
+                </label>
+            </div>
             <div class="slider-grid">
                 <label class="control" for="speed">
                     <span>Speed</span>
@@ -27,39 +35,95 @@
                     <input type="range" min="2" max="120" value="20" id="speed">
                 </label>
 
-                <label class="control" for="row">
-                    <span>Rows</span>
+                <label class="control" for="row" id="rowControlWrap">
+                    <span id="rowLabelText">Grid Size</span>
                     <strong id="rowval">40</strong>
                     <input type="range" min="20" max="90" value="40" id="row">
                 </label>
 
-                <label class="control" for="col">
+                <label class="control" for="col" id="colControlWrap" style="display: none;">
                     <span>Columns</span>
                     <strong id="colval">40</strong>
                     <input type="range" min="20" max="90" value="40" id="col">
                 </label>
             </div>
 
-            <div class="button-row">
-                <button id="start" class="btn btn-primary">Play</button>
-                <button id="step" class="btn">Step</button>
-                <button id="random" class="btn">Randomize</button>
-                <button id="clear" class="btn btn-danger">Clear</button>
+            <div class="actions-row">
+                <div class="button-row">
+                    <button id="start" class="btn btn-primary">Play</button>
+                    <button id="step" class="btn">Step</button>
+                    <button id="random" class="btn">Randomize</button>
+                    <button id="clear" class="btn btn-danger">Clear</button>
+                </div>
+                <div class="button-row">
+                    <button id="drawCellBtn" class="btn">Draw Cell</button>
+                    <select id="patternSelect" class="btn pattern-select" aria-label="Select pattern">
+                        <option value="" disabled selected>-- Shapes --</option>
+                        <optgroup label="Still Lifes">
+                            <option value="Block">Block</option>
+                            <option value="Bee-hive">Bee-hive</option>
+                            <option value="Loaf">Loaf</option>
+                            <option value="Boat">Boat</option>
+                            <option value="Tub">Tub</option>
+                        </optgroup>
+                        <optgroup label="Oscillators">
+                            <option value="Blinker">Blinker</option>
+                            <option value="Toad">Toad</option>
+                            <option value="Beacon">Beacon</option>
+                            <option value="Pulsar">Pulsar</option>
+                            <option value="Penta-decathlon">Penta-decathlon</option>
+                        </optgroup>
+                        <optgroup label="Spaceships">
+                            <option value="Glider">Glider</option>
+                            <option value="LWSS">LWSS</option>
+                            <option value="MWSS">MWSS</option>
+                            <option value="HWSS">HWSS</option>
+                        </optgroup>
+                        <optgroup label="Guns">
+                            <option value="Gosper Glider Gun">Gosper Glider Gun</option>
+                        </optgroup>
+                    </select>
+                </div>
             </div>
 
             <div class="status-row" role="status" aria-live="polite">
                 <p>State: <span id="state">Paused</span></p>
                 <p>Generation: <span id="generation">0</span></p>
                 <p>Alive: <span id="alive">0</span></p>
-                <p>Trace: <span id="traceMode">Off</span></p>
             </div>
 
-            <p class="hint">Tip: double-click any cell to lock trace mode, then move your cursor to paint alive cells.</p>
+            <p class="hint">Tip: Double click and drag your cursor on the grid to paint live cells directly, and double click again to disable.</p>
+            <p class="hint">Also, do try out the Gosper Glider Gun :P</p>
         </section>
 
         <section class="panel board-wrap" aria-label="Game board">
             <div id="grid" class="grid"></div>
         </section>
     </main>
+
+    <div id="aboutModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" hidden>
+        <div class="modal-card">
+            <button id="closeAbout" class="modal-close" aria-label="Close about dialog">x</button>
+            <h2 id="aboutTitle">About Conway's Game of Life</h2>
+            <p>
+                The Game of Life is a zero-player simulation where every generation is calculated from the previous one.
+                Each cell is either alive or dead and changes state using only its 8 neighbors.
+            </p>
+            <ol>
+                <li>Any live cell with fewer than two live neighbors dies.</li>
+                <li>Any live cell with two or three live neighbors survives.</li>
+                <li>Any live cell with more than three live neighbors dies.</li>
+                <li>Any dead cell with exactly three live neighbors becomes alive.</li>
+            </ol>
+            <p class="modal-credit">
+                Designed and developed by - <span class="author-name">EliasJoby</span>
+                <a href="https://www.linkedin.com/in/elias-joby/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn Profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </p>
+        </div>
+    </div>
 </body>
 </html>
