@@ -1,43 +1,40 @@
-# 🧬 Conway's Game of Life
+# 🧬 Conway's Game of Life: A Study in Universal Computation
 
-An optimized web-based implementation of the legendary cellular automaton devised by John Horton Conway. This "zero-player" simulation demonstrates how complex, organic patterns can emerge from a few simple, deterministic rules.
+An optimized web-based implementation of the legendary cellular automaton devised by John Horton Conway. This "zero-player" simulation demonstrates how complex, organic patterns and emergent behaviors can arise from a set of simple, deterministic rules.
 
 ---
 
-## The Digital Ecosystem 
+## 🧠 Behind the Project
 
-The simulation operates on a two-dimensional grid of square **cells**. Each cell exists in one of two binary states:
-* **Alive** (Populated)
-* **Dead** (Unpopulated)
+This implementation sits at the intersection of academic theory and digital curiosity. It was developed to explore the profound implications of **Cellular Automata**:
 
-The fate of every cell is governed by its **Moore Neighborhood**—the eight cells immediately surrounding it (horizontal, vertical, and diagonal).
+* **Theory of Computation (NITC):** Built as a practical exploration for my coursework at the National Institute of Technology Calicut. It serves as a visual gateway into understanding the **Church-Turing Thesis** and how local state transitions can reach the heights of **Turing Completeness**.
+* **Veritasium Inspiration:** Heavily influenced by the video [**"Math's Fundamental Flaw"**](https://www.youtube.com/watch?v=HeQX2HjkcNo), which explores Gödel's Incompleteness Theorem and the fascinating realization that systems like the Game of Life are capable of performing any calculation possible by a modern computer, effectively acting as a **Universal Turing Machine**.
 
-## 📜 The Laws of Nature
+## The Laws of Nature
 
 The simulation progresses in discrete time-steps called **ticks**. During each tick, the state of the entire grid is updated simultaneously based on four fundamental laws:
 
-1.  **Isolation:** Any living cell with fewer than two living neighbors dies (underpopulation).
-2.  **Stability:** Any living cell with two or three living neighbors survives into the next generation.
-3.  **Overcrowding:** Any living cell with more than three living neighbors dies (overpopulation).
-4.  **Genesis:** Any dead cell with exactly three living neighbors becomes a live cell (reproduction).
+1.  **Isolation:** Any living cell with < 2 living neighbors dies (underpopulation).
+2.  **Stability:** Any living cell with 2 or 3 living neighbors survives.
+3.  **Overcrowding:** Any living cell with > 3 living neighbors dies (overpopulation).
+4.  **Genesis:** Any dead cell with exactly 3 living neighbors becomes a live cell (reproduction).
 
 ## Technical Implementation
 
-Unlike basic implementations, this version focuses on computational efficiency:
-* **Simultaneous Updates:** Uses a double-buffering approach to ensure the state of the current generation is not mutated while calculating the next.
-* **Deterministic Logic:** Since there is no randomness, the "seed" (initial state) perfectly dictates the evolution of the system.
-* **Performance:** Designed to handle high-frequency ticks for smooth, fluid visualization.
+* **Double-Buffering Logic:** To ensure the rules are applied simultaneously across the grid, the simulation uses a dual-grid approach, preventing state mutation during the calculation of the next generation.
+* **Heatmap & Persistence:** Includes an **Aging Effect** (Heatmap) that tracks the "persistence" of cells. Newborn cells appear in vibrant mint green, while established cells transition into deeper teal shades, visualizing the history of the "seed."
+* **Performance Optimized:** Designed to handle high-frequency updates and large grids for fluid visualization.
 
-## Getting Started
+## Exploration
 
-1.  **The Seed:** Click on the grid to toggle cells and create your initial pattern.
-2.  **Evolution:** Hit 'Start' to begin the simulation.
-3.  **Observation:** Watch for "Still Lifes," "Oscillators," and "Spaceships" that emerge from the chaos.
+1.  **The Seed:** Manually toggle cells or use the **Randomize** tool to create an initial state.
+2.  **Trace Mode:** Enable the trace feature to visualize the path and movement of patterns like Gliders and Oscillators.
+3.  **Observation:** Look for emergent structures such as "Still Lifes" (Block, Beehive), "Oscillators" (Blinker, Pulsar), and "Spaceships" (Glider, LWSS).
 
 ---
 
 ##  Author
-**Elias Joby**
-*Computer Science & Robotics*
+**Elias Joby** *Computer Science & Robotics*
 
-[Project Link](https://github.com/your-username/your-repo-name) | [Wikipedia Reference](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+[Project Link](https://github.com/eliasjoby/CellAutomata-Forge) | [Reference: Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
